@@ -15,12 +15,10 @@ import pl.humanforhuman.backend.service.UserService;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final UserRepository userRepository;
-
     private final PasswordEncoder passwordEncoder;
 
     public AuthController(UserService userService, AuthenticationManager authenticationManager, JwtService jwtService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
@@ -49,11 +47,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<TokenResponse> login(@RequestBody LoginRequest request) {
-
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-
         String token = jwtService.generateToken(request.getEmail());
-
         return ResponseEntity.ok(new TokenResponse(token));
     }
 }

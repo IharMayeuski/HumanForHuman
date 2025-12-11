@@ -1,16 +1,15 @@
 package pl.humanforhuman.backend.service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.humanforhuman.backend.entity.User;
 import pl.humanforhuman.backend.enums.Role;
 import pl.humanforhuman.backend.repository.UserRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
 public class UserService {
-
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {

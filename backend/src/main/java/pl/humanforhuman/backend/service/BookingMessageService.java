@@ -1,14 +1,13 @@
 package pl.humanforhuman.backend.service;
 
+import org.springframework.stereotype.Service;
 import pl.humanforhuman.backend.entity.BookingMessage;
 import pl.humanforhuman.backend.repository.BookingMessageRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class BookingMessageService {
-
     private final BookingMessageRepository repo;
 
     public BookingMessageService(BookingMessageRepository repo) {

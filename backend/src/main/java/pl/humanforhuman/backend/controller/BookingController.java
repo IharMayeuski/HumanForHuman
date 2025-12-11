@@ -1,15 +1,14 @@
 package pl.humanforhuman.backend.controller;
 
+import org.springframework.web.bind.annotation.*;
 import pl.humanforhuman.backend.entity.Booking;
 import pl.humanforhuman.backend.service.BookingService;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
-
     private final BookingService service;
 
     public BookingController(BookingService service) {
