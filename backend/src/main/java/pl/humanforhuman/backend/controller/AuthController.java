@@ -5,12 +5,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import pl.humanforhuman.backend.dto.auth.LoginRequest;
+import pl.humanforhuman.backend.dto.auth.TokenResponse;
 import pl.humanforhuman.backend.entity.User;
 import pl.humanforhuman.backend.repository.UserRepository;
 import pl.humanforhuman.backend.security.JwtService;
 import pl.humanforhuman.backend.service.UserService;
-import pl.humanforhuman.backend.dto.auth.LoginRequest;
-import pl.humanforhuman.backend.dto.auth.TokenResponse;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -23,9 +23,7 @@ public class AuthController {
 
     private final PasswordEncoder passwordEncoder;
 
-    public AuthController(UserService userService,
-                          AuthenticationManager authenticationManager,
-                          JwtService jwtService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public AuthController(UserService userService, AuthenticationManager authenticationManager, JwtService jwtService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
@@ -52,12 +50,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<TokenResponse> login(@RequestBody LoginRequest request) {
 
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
         String token = jwtService.generateToken(request.getEmail());
 
