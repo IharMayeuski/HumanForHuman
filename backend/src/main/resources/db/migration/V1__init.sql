@@ -39,7 +39,7 @@ CREATE TABLE users (
     gender        VARCHAR(20),
     birth_date    DATE,
     role          VARCHAR(30) NOT NULL REFERENCES roles_enum(role),
-    profile_photo_url VARCHAR(500),
+    profile_photo_url TEXT,
     created_at    TIMESTAMP DEFAULT now(),
     updated_at    TIMESTAMP DEFAULT now()
 );

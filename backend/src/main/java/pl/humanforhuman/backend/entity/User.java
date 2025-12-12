@@ -14,23 +14,20 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(unique = true, nullable = false)
     private String email;
-
     @Column(nullable = false)
     private String password;
-
     private String firstName;
     private String lastName;
     private String phone;
     private String gender;
+    @Column(name = "profile_photo_url")
+    private String profilePhotoUrl;
     private LocalDate birthDate;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;

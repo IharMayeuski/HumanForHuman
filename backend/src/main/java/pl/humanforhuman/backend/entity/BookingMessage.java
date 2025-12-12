@@ -13,21 +13,17 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class BookingMessage {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne
     @JoinColumn(name = "booking_id", nullable = false)
     private Booking booking;
-
     @ManyToOne
     @JoinColumn(name = "sender_id", nullable = false)
     private User sender;
-
     private String messageText;
-
+    @Builder.Default
     private LocalDateTime createdAt = LocalDateTime.now();
 }
 

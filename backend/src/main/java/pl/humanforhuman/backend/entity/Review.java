@@ -13,26 +13,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Review {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne
     @JoinColumn(name = "booking_id", nullable = false)
     private Booking booking;
-
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private User customer;
-
     @ManyToOne
     @JoinColumn(name = "provider_id", nullable = false)
     private User provider;
-
     private Integer rating;
-
     private String comment;
-
+    @Builder.Default
     private LocalDateTime createdAt = LocalDateTime.now();
 }

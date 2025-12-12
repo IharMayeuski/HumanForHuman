@@ -25,7 +25,7 @@ export default function ProfilePage() {
   if (!user) return <h2 style={{ textAlign: "center", color: "red" }}>Failed to load user</h2>;
 
   // 🔹 Если аватар отсутствует — ставим дефолтный
-  const avatar = user.avatar || "/images/no-photo.png";
+  const avatar = user.profile_photo_url || "/images/no-photo.png";
 
   return (
     <div style={styles.container}>
