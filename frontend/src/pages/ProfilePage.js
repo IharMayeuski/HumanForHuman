@@ -47,9 +47,17 @@ export default function ProfilePage() {
         <button style={styles.button} onClick={() => window.location.href = "/profile/edit"}>
           Edit Profile
         </button>
+        <button style={styles.logout} onClick={handleLogout}>
+          Logout
+        </button>
       </div>
     </div>
   );
+}
+
+function handleLogout() {
+  localStorage.removeItem("token");
+  window.location.href = "/login";
 }
 
 const styles = {
@@ -89,5 +97,14 @@ const styles = {
     fontSize: 16,
     cursor: "pointer",
     transition: "0.2s"
+  },
+  logout: {
+    marginTop: 15,
+    padding: "10px",
+    width: "100%",
+    borderRadius: 12,
+    border: "1px solid #ddd",
+    background: "#f5f5f5",
+    cursor: "pointer"
   }
 };

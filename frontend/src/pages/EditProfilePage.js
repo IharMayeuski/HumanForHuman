@@ -98,10 +98,6 @@ export default function EditProfilePage() {
           <button type="submit" style={styles.button} disabled={saving}>
             {saving ? "Saving..." : "Save changes"}
           </button>
-          <button style={styles.button} onClick={() => window.location.href = "/edit"}>
-            Edit Profile
-          </button>
-
         </form>
       </div>
     </div>
