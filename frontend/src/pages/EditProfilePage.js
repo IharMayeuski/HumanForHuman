@@ -47,7 +47,7 @@ export default function EditProfilePage() {
 
     setSaving(false);
     alert("Profile updated!");
-    window.location.href = "/profile";
+    window.location.href = "/";
   }
 
   if (loading) return <p>Loading...</p>;

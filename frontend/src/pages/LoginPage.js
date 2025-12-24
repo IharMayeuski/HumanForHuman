@@ -13,9 +13,7 @@ export default function LoginPage() {
     try {
       const result = await login(email.trim(), password);
       localStorage.setItem("token", result.token);
-      alert("Logged in!");
-
-      window.location.href = "/profile";
+      window.location.href = "/";
     } catch (err) {
       setError("Invalid email or password");
     }
@@ -23,6 +21,7 @@ export default function LoginPage() {
 
   return (
     <div style={{ padding: 20 }}>
+
       <h2>Login</h2>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
@@ -44,6 +43,23 @@ export default function LoginPage() {
 
         <button type="submit">Login</button>
       </form>
+
+      {/* 👇 КНОПКА ДЛЯ ГОСТЯ */}
+      <div style={{ marginTop: 20 }}>
+        <button
+          onClick={() => window.location.href = "/"}
+          style={{
+            background: "transparent",
+            border: "none",
+            color: "#007bff",
+            cursor: "pointer",
+            textDecoration: "underline"
+          }}
+        >
+          Continue as guest
+        </button>
+      </div>
+
     </div>
   );
 }

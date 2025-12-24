@@ -35,10 +35,10 @@ export default function RegisterPage() {
           value={form.password} onChange={e => update("password", e.target.value)} /><br /><br />
 
         <input placeholder="First name"
-          value={form.first_name} onChange={e => update("first_name", e.target.value)} /><br /><br />
+          value={form.first_name} onChange={e => update("firstName", e.target.value)} /><br /><br />
 
         <input placeholder="Last name"
-          value={form.last_name} onChange={e => update("last_name", e.target.value)} /><br /><br />
+          value={form.last_name} onChange={e => update("lastName", e.target.value)} /><br /><br />
 
         <button type="submit">Create account</button>
       </form>

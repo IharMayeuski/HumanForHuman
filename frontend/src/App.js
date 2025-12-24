@@ -4,38 +4,33 @@ import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import EditProfilePage from "./pages/EditProfilePage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import AppLayout from "./layouts/AppLayout";
+import AuthHeader from "./components/AuthHeader";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <BrowserRouter>
+
+      {/* HEADER — всегда выше роутов */}
+      <AuthHeader />
+
       <Routes>
 
         {/* Public */}
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
         {/* Protected */}
         <Route
           path="/profile"
-          element={
-            <ProtectedRoute>
-              <AppLayout>
-                <ProfilePage />
-              </AppLayout>
-            </ProtectedRoute>
-          }
+          element={<ProtectedRoute><ProfilePage /></ProtectedRoute>}
         />
+
 
         <Route
           path="/profile/edit"
-          element={
-            <ProtectedRoute>
-              <AppLayout>
-                <EditProfilePage />
-              </AppLayout>
-            </ProtectedRoute>
-          }
+          element={<ProtectedRoute><EditProfilePage /></ProtectedRoute>}
         />
 
       </Routes>
