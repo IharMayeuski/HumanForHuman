@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProfile } from "../api/user";
+import { Link } from "react-router-dom";
 
 export default function AuthHeader() {
   const [user, setUser] = useState(null);
@@ -20,7 +21,9 @@ export default function AuthHeader() {
 
   return (
     <div style={styles.header}>
-      <div>ihuman.pl</div>
+      <Link to="/" style={styles.logoLink}>
+        <div style={styles.logo}>ihuman.pl</div>
+      </Link>
 
       <div style={styles.right}>
         <span>{user.firstName || user.email}</span>
@@ -55,5 +58,14 @@ const styles = {
     display: "flex",
     gap: 10,
     alignItems: "center"
-  }
+  },
+  logo: {
+      margin: 0,
+      cursor: "pointer"
+    },
+
+    logoLink: {
+      textDecoration: "none",
+      color: "inherit"
+    }
 };

@@ -6,6 +6,7 @@ import EditProfilePage from "./pages/EditProfilePage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthHeader from "./components/AuthHeader";
 import HomePage from "./pages/HomePage";
+import "./styles/ui.css";
 
 function App() {
   return (

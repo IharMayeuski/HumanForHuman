@@ -128,13 +128,7 @@ const styles = {
     objectFit: "cover"
   },
   input: {
-    width: "100%",
-    padding: "12px",
-    marginTop: 6,
-    marginBottom: 15,
-    borderRadius: 8,
-    border: "1px solid #ccc",
-    fontSize: 16
+    width: "100%"
   },
   button: {
     padding: "14px",
