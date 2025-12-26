@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function HomePage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const isAuthenticated = !!localStorage.getItem("token");
 
@@ -8,13 +10,13 @@ export default function HomePage() {
     <div style={styles.container}>
       {isAuthenticated ? (
         <>
-          <h2>Welcome to ihuman.pl</h2>
-          <p>This is your dashboard.</p>
+        <h2>{t("welcome")}</h2>
+        <p>{t("dashboard")}</p>
         </>
       ) : (
         <>
           <h2>Добро пожаловать</h2>
-          <p>Пожалуйста, войдите или зарегистрируйтесь</p>
+          <p>{t("please, register")}</p>
 
           <div style={styles.buttons}>
             <button

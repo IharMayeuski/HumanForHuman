@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { login } from "../api/auth";
+import { useTranslation } from "react-i18next";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+    const { t } = useTranslation();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -56,10 +58,9 @@ export default function LoginPage() {
             textDecoration: "underline"
           }}
         >
-          Continue as guest
+          {t("continueAsGuest")}
         </button>
       </div>
-
     </div>
   );
 }

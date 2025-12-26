@@ -1,0 +1,10 @@
+{
+  "welcome": "Добро пожаловать в ihuman.pl",
+  "dashboard": "Это твоя рабочая панель",
+  "login": "Zaloguj się",
+  "register": "Zarejestruj się",
+  "logout": "Wyloguj się",
+  "editProfile": "Edytuj profil",
+  "continueAsGuest": "Продолжай как гость",
+  "please, register": "Пожалуйста, войдите или зарегистрируйтесь"
+}

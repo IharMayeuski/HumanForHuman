@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { getProfile } from "../api/user";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function AuthHeader() {
   const [user, setUser] = useState(null);
+  const { t, i18n } = useTranslation();
+
+  function changeLang(lang) {
+    i18n.changeLanguage(lang);
+  }
 
   useEffect(() => {
     async function load() {
@@ -17,14 +23,29 @@ export default function AuthHeader() {
     load();
   }, []);
 
-  if (!user) return null;
+  if (!user) return (
+                 <div style={styles.header}>
+                   <Link to="/" style={styles.logoLink}>
+                     <div style={styles.logo}>ihuman.pl</div>
+                   </Link>
+                   <div style={{ padding: 10 }}>
+                     <button onClick={() => changeLang("pl")}>PL</button>
+                     <button onClick={() => changeLang("en")}>EN</button>
+                     <button onClick={() => changeLang("ru")}>RU</button>
+                   </div>
+                 </div>
+               );
 
   return (
     <div style={styles.header}>
       <Link to="/" style={styles.logoLink}>
         <div style={styles.logo}>ihuman.pl</div>
       </Link>
-
+      <div style={{ padding: 10 }}>
+        <button onClick={() => changeLang("pl")}>PL</button>
+        <button onClick={() => changeLang("en")}>EN</button>
+        <button onClick={() => changeLang("ru")}>RU</button>
+      </div>
       <div style={styles.right}>
         <span>{user.firstName || user.email}</span>
 
