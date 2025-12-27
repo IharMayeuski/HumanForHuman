@@ -3,7 +3,7 @@ import { getProfile, updateProfile } from "../api/profile";
 import api from "../api/axios";
 import { useTranslation } from "react-i18next";
 
-const DEFAULT_AVATAR = "/images/no-photo.png"; // твоя дефолтная картинка
+const DEFAULT_AVATAR = "/images/no-photo.png";
 
 export async function fetchMe() {
   const res = await api.get("/api/users/me");
@@ -22,7 +22,6 @@ export default function EditProfilePage() {
     avatarUrl: ""
   });
 
-  // Загружаем профиль при открытии страницы
   useEffect(() => {
     async function load() {
       const data = await getProfile();

@@ -35,7 +35,7 @@ export default function AuthHeader() {
           <button
             onClick={() => {
               logout();
-              window.location.reload(); // 🔥 ключевая строка
+              window.location.reload();
             }}
           >
             {t("logout")}

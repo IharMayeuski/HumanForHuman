@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
   }
 
   function loginSuccess() {
-    loadUser(); // 👈 ВАЖНО
+    loadUser();
   }
 
   function logout() {

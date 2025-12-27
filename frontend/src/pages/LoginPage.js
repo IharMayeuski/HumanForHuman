@@ -11,7 +11,7 @@ export default function LoginPage() {
 
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { loginSuccess } = useAuth(); // 👈
+  const { loginSuccess } = useAuth();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -20,9 +20,8 @@ export default function LoginPage() {
     try {
       const result = await login(email.trim(), password);
       localStorage.setItem("token", result.token);
-
-      loginSuccess();        // 🔥 ВАЖНО
-      navigate("/");         // без F5
+      loginSuccess();
+      navigate("/");
     } catch {
       setError(t("loginError"));
     }
@@ -41,7 +40,6 @@ export default function LoginPage() {
           value={email}
           onChange={e => setEmail(e.target.value)}
         /><br /><br />
-
         <input
           type="password"
           placeholder={t("password")}
