@@ -9,6 +9,7 @@ export default function AuthHeader() {
 
   function changeLang(lang) {
     i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
   }
 
   useEffect(() => {
@@ -24,17 +25,17 @@ export default function AuthHeader() {
   }, []);
 
   if (!user) return (
-                 <div style={styles.header}>
-                   <Link to="/" style={styles.logoLink}>
-                     <div style={styles.logo}>ihuman.pl</div>
-                   </Link>
-                   <div style={{ padding: 10 }}>
-                     <button onClick={() => changeLang("pl")}>PL</button>
-                     <button onClick={() => changeLang("en")}>EN</button>
-                     <button onClick={() => changeLang("ru")}>RU</button>
-                   </div>
-                 </div>
-               );
+    <div style={styles.header}>
+      <Link to="/" style={styles.logoLink}>
+        <div style={styles.logo}>ihuman.pl</div>
+      </Link>
+      <div style={{ padding: 10 }}>
+        <button onClick={() => changeLang("pl")}>PL</button>
+        <button onClick={() => changeLang("en")}>EN</button>
+        <button onClick={() => changeLang("ru")}>RU</button>
+      </div>
+    </div>
+  );
 
   return (
     <div style={styles.header}>
@@ -81,12 +82,12 @@ const styles = {
     alignItems: "center"
   },
   logo: {
-      margin: 0,
-      cursor: "pointer"
-    },
+    margin: 0,
+    cursor: "pointer"
+  },
 
-    logoLink: {
-      textDecoration: "none",
-      color: "inherit"
-    }
+  logoLink: {
+    textDecoration: "none",
+    color: "inherit"
+  }
 };

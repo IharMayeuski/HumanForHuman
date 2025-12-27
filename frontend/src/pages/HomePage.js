@@ -2,20 +2,20 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function HomePage() {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const isAuthenticated = !!localStorage.getItem("token");
+  const { t, i18n } = useTranslation();
 
   return (
     <div style={styles.container}>
       {isAuthenticated ? (
         <>
-        <h2>{t("welcome")}</h2>
-        <p>{t("dashboard")}</p>
+          <h2>{t("welcome")}</h2>
+          <p>{t("dashboard")}</p>
         </>
       ) : (
         <>
-          <h2>Добро пожаловать</h2>
+          <h2>{t("welcome0")}</h2>
           <p>{t("please, register")}</p>
 
           <div style={styles.buttons}>
@@ -23,14 +23,14 @@ export default function HomePage() {
               style={styles.primary}
               onClick={() => navigate("/login")}
             >
-              Войти
+              {t("enter")}
             </button>
 
             <button
               style={styles.secondary}
               onClick={() => navigate("/register")}
             >
-              Регистрация
+              {t("registration")}
             </button>
           </div>
         </>

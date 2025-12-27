@@ -1,10 +1,18 @@
 {
+  "welcome0": "Добро пожаловать",
+  "enter": "Войти",
+  "registration": "Регистрация",
   "welcome": "Добро пожаловать в ihuman.pl",
   "dashboard": "Это твоя рабочая панель",
-  "login": "Zaloguj się",
-  "register": "Zarejestruj się",
-  "logout": "Wyloguj się",
-  "editProfile": "Edytuj profil",
+  "login": "Зарегистрируйся",
+  "email": "Емейл",
+  "password": "Пароль",
+  "register": "Регистрация",
+  "logout": "Забудь меня",
+  "editProfile": "Отредактируй",
   "continueAsGuest": "Продолжай как гость",
-  "please, register": "Пожалуйста, войдите или зарегистрируйтесь"
+  "please, register": "Пожалуйста, войдите или зарегистрируйтесь",
+  "firstName": "Имя",
+  "lastName": "Фамилия",
+  "createAccount": "Создать аккаунт"
 }

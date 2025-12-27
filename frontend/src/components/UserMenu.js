@@ -20,7 +20,7 @@ export default function UserMenu({ user }) {
       {open && (
         <div style={styles.menu}>
           <div style={styles.item}
-               onClick={() => window.location.href = "/profile/edit"}>
+            onClick={() => window.location.href = "/profile/edit"}>
             Edit profile
           </div>
           <div style={styles.item} onClick={logout}>
