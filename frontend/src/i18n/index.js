@@ -15,11 +15,9 @@ i18n
       pl: { translation: pl },
       ru: { translation: ru }
     },
-    lng: savedLang,        // ✅ ВОТ КЛЮЧЕВОЕ
+    lng: savedLang,
     fallbackLng: "en",
-    interpolation: {
-      escapeValue: false
-    }
+    interpolation: { escapeValue: false }
   });
 
 export default i18n;

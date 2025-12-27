@@ -9,6 +9,7 @@ export function AuthProvider({ children }) {
 
   async function loadUser() {
     const token = localStorage.getItem("token");
+
     if (!token) {
       setUser(null);
       setLoading(false);
@@ -25,6 +26,10 @@ export function AuthProvider({ children }) {
     }
   }
 
+  function loginSuccess() {
+    loadUser(); // 👈 ВАЖНО
+  }
+
   function logout() {
     localStorage.removeItem("token");
     setUser(null);
@@ -35,7 +40,9 @@ export function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loading, logout }}>
+    <AuthContext.Provider
+      value={{ user, loading, loginSuccess, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

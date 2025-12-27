@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { login } from "../api/auth";
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { loginSuccess } = useAuth(); // 👈
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -17,8 +20,10 @@ export default function LoginPage() {
     try {
       const result = await login(email.trim(), password);
       localStorage.setItem("token", result.token);
-      navigate("/");
-    } catch (err) {
+
+      loginSuccess();        // 🔥 ВАЖНО
+      navigate("/");         // без F5
+    } catch {
       setError(t("loginError"));
     }
   }
@@ -46,22 +51,6 @@ export default function LoginPage() {
 
         <button type="submit">{t("login")}</button>
       </form>
-
-      {/* 👇 КНОПКА ГОСТЯ */}
-      <div style={{ marginTop: 20 }}>
-        <button
-          onClick={() => navigate("/")}
-          style={{
-            background: "transparent",
-            border: "none",
-            color: "#007bff",
-            cursor: "pointer",
-            textDecoration: "underline"
-          }}
-        >
-          {t("continueAsGuest")}
-        </button>
-      </div>
     </div>
   );
 }

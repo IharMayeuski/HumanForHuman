@@ -1,70 +1,49 @@
-import { useEffect, useState } from "react";
-import { getProfile } from "../api/user";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "../context/AuthContext";
 
 export default function AuthHeader() {
-  const [user, setUser] = useState(null);
+  const { user, loading, logout } = useAuth();
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
 
   function changeLang(lang) {
     i18n.changeLanguage(lang);
     localStorage.setItem("lang", lang);
   }
 
-  useEffect(() => {
-    async function load() {
-      try {
-        const data = await getProfile();
-        setUser(data);
-      } catch {
-        setUser(null);
-      }
-    }
-    load();
-  }, []);
-
-  if (!user) return (
-    <div style={styles.header}>
-      <Link to="/" style={styles.logoLink}>
-        <div style={styles.logo}>ihuman.pl</div>
-      </Link>
-      <div style={{ padding: 10 }}>
-        <button onClick={() => changeLang("pl")}>PL</button>
-        <button onClick={() => changeLang("en")}>EN</button>
-        <button onClick={() => changeLang("ru")}>RU</button>
-      </div>
-    </div>
-  );
-
   return (
     <div style={styles.header}>
       <Link to="/" style={styles.logoLink}>
         <div style={styles.logo}>ihuman.pl</div>
       </Link>
-      <div style={{ padding: 10 }}>
+
+      <div>
         <button onClick={() => changeLang("pl")}>PL</button>
         <button onClick={() => changeLang("en")}>EN</button>
         <button onClick={() => changeLang("ru")}>RU</button>
       </div>
-      <div style={styles.right}>
-        <span>{user.firstName || user.email}</span>
 
-        <button onClick={() => window.location.href = "/profile/edit"}>
-          {t("edit")}
-        </button>
+      {!loading && user && (
+        <div style={styles.right}>
+          <span>{user.firstName || user.email}</span>
 
-        <button onClick={logout}>
-          {t("logout")}
-        </button>
-      </div>
+          <button onClick={() => navigate("/profile/edit")}>
+            {t("editProfile")}
+          </button>
+
+          <button
+            onClick={() => {
+              logout();
+              window.location.reload(); // 🔥 ключевая строка
+            }}
+          >
+            {t("logout")}
+          </button>
+        </div>
+      )}
     </div>
   );
-}
-
-function logout() {
-  localStorage.removeItem("token");
-  window.location.href = "/login";
 }
 
 const styles = {
@@ -82,10 +61,8 @@ const styles = {
     alignItems: "center"
   },
   logo: {
-    margin: 0,
     cursor: "pointer"
   },
-
   logoLink: {
     textDecoration: "none",
     color: "inherit"
