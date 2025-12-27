@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { getProfile } from "../api/user";
+import { useTranslation } from "react-i18next";
 
 export default function ProfilePage() {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function load() {
@@ -40,24 +42,19 @@ export default function ProfilePage() {
         <p style={styles.role}>{user.role}</p>
 
         <div style={styles.infoBox}>
-          <p><strong>Email:</strong> {user.email}</p>
-          <p><strong>Phone:</strong> {user.phone || "-"}</p>
+          <p><strong>{t("email")}:</strong> {user.email}</p>
+          <p><strong>{t("phone")}:</strong> {user.phone || "-"}</p>
         </div>
 
         <button style={styles.button} onClick={() => window.location.href = "/profile/edit"}>
-          Edit Profile
+          {t("editProfile")}
         </button>
-        <button style={styles.logout} onClick={handleLogout}>
-          Logout
+        <button style={styles.logout} onClick={() => window.location.href = "/"}>
+          {t("logout2")}
         </button>
       </div>
     </div>
   );
-}
-
-function handleLogout() {
-  localStorage.removeItem("token");
-  window.location.href = "/login";
 }
 
 const styles = {

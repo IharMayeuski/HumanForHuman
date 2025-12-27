@@ -9,11 +9,13 @@
   "password": "Hasło",
   "register": "Zarejestruj się",
   "logout": "Wyloguj się",
+  "logout2": "Wejscie",
   "editProfile": "Edytuj profil",
   "continueAsGuest": "Kontynuuj jako gość",
   "pleaseRegister": "Proszę się zarejestrować",
   "firstName": "Imię",
   "lastName": "Nazwisko",
   "createAccount": "Utwórz konto",
-  "edit": "Редактировать"
+  "edit": "Redaktowac",
+  "phone": "Numer"
 }

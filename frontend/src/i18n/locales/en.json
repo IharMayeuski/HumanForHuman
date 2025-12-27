@@ -9,11 +9,13 @@
   "password": "Password",
   "register": "Register please",
   "logout": "Logout",
+  "logout2": "Logout",
   "editProfile": "Edit profile",
   "continueAsGuest": "Continue like a Gost",
   "please, register": "Please, register",
   "firstName": "First name",
   "lastName": "Last name",
   "createAccount": "Create account",
-  "edit": "Edit"
+  "edit": "Edit",
+  "phone": "Phone"
 }
