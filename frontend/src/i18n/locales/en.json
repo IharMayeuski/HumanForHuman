@@ -14,5 +14,6 @@
   "please, register": "Please, register",
   "firstName": "First name",
   "lastName": "Last name",
-  "createAccount": "Create account"
+  "createAccount": "Create account",
+  "edit": "Edit"
 }

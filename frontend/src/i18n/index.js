@@ -5,6 +5,8 @@ import en from "./locales/en.json";
 import pl from "./locales/pl.json";
 import ru from "./locales/ru.json";
 
+const savedLang = localStorage.getItem("lang") || "pl";
+
 i18n
   .use(initReactI18next)
   .init({
@@ -13,7 +15,7 @@ i18n
       pl: { translation: pl },
       ru: { translation: ru }
     },
-    lng: "pl",           // язык по умолчанию
+    lng: savedLang,        // ✅ ВОТ КЛЮЧЕВОЕ
     fallbackLng: "en",
     interpolation: {
       escapeValue: false

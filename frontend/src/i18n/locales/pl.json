@@ -14,5 +14,6 @@
   "pleaseRegister": "Proszę się zarejestrować",
   "firstName": "Imię",
   "lastName": "Nazwisko",
-  "createAccount": "Utwórz konto"
+  "createAccount": "Utwórz konto",
+  "edit": "Редактировать"
 }

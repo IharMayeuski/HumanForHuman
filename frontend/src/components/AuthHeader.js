@@ -51,11 +51,11 @@ export default function AuthHeader() {
         <span>{user.firstName || user.email}</span>
 
         <button onClick={() => window.location.href = "/profile/edit"}>
-          Edit
+          {t("edit")}
         </button>
 
         <button onClick={logout}>
-          Logout
+          {t("logout")}
         </button>
       </div>
     </div>

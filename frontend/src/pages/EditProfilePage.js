@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProfile, updateProfile } from "../api/profile";
 import api from "../api/axios";
+import { useTranslation } from "react-i18next";
 
 const DEFAULT_AVATAR = "/images/no-photo.png"; // твоя дефолтная картинка
 
@@ -12,6 +13,7 @@ export async function fetchMe() {
 export default function EditProfilePage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const { t, i18n } = useTranslation();
 
   const [form, setForm] = useState({
     firstName: "",
@@ -64,14 +66,14 @@ export default function EditProfilePage() {
 
         <form onSubmit={handleSave} style={{ width: "100%" }}>
 
-          <label>First Name</label>
+          <label>{t("firstName")}</label>
           <input
             value={form.firstName}
             onChange={e => updateField("firstName", e.target.value)}
             style={styles.input}
           />
 
-          <label>Last Name</label>
+          <label>{t("lastName")}</label>
           <input
             value={form.lastName}
             onChange={e => updateField("lastName", e.target.value)}
